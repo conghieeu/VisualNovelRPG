@@ -4,5 +4,6 @@ using UnityEngine;
 public class ActorStats : ScriptableObject
 {
     public string actorName;
-    
+    public GameObject gameObject;
+
 }

@@ -15,6 +15,6 @@ public class btnSkipDialog : MonoBehaviour
 
     void SkipDialog()
     {
-        dialogBox.CloseDialogBox();
+        dialogBox.SkipDialog();
     }
 }

@@ -7,6 +7,7 @@ public class DialogBox : MonoBehaviour
     public TMPro.TextMeshProUGUI characterNameText;
     public TMPro.TextMeshProUGUI dialogContentText;
     public bool autoPlayMode;
+    public List<DialogActorPopupEffect> dialogActorPopupEffects;
     private int currentLineIndex = 0;
     private List<DialogLine> dialogLines;
     public float textSpeed = 0.05f; // Tốc độ hiển thị từng ký tự
@@ -49,12 +50,20 @@ public class DialogBox : MonoBehaviour
                 StopCoroutine(typingCoroutine);
             }
 
+            foreach (DialogActorPopupEffect dialogActorPopupEffect in dialogActorPopupEffects)
+            {
+                dialogActorPopupEffect.HideActorPopup();
+                if (dialogActorPopupEffect.actorStats == dialogLines[currentLineIndex].actorStats)
+                {
+                    dialogActorPopupEffect.ShowActorPopup();
+                }
+            }
             characterNameText.text = dialogLines[currentLineIndex].actorStats.actorName;
             typingCoroutine = StartCoroutine(TypeSentence(dialogLines[currentLineIndex].dialogText));
             gameObject.SetActive(true);
             currentLineIndex++;
         }
-        else
+        else // Kết thúc hội thoại
         {
             gameObject.SetActive(false);
         }
@@ -71,8 +80,8 @@ public class DialogBox : MonoBehaviour
         isTyping = false;
     }
 
-    // Phương thức để đóng hộp thoại
-    public void CloseDialogBox()
+    // Phương thức để bỏ qua hội thoại
+    public void SkipDialog()
     {
         gameObject.SetActive(false);
         StopAllCoroutines();
