@@ -13,12 +13,20 @@ public class DialogBox : MonoBehaviour
     //TODO: phát âm thanh khi hiển thị từng ký tự
 
     private Coroutine typingCoroutine;
+    private bool isTyping = false;
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) // Right mouse button
         {
-            ShowNextLine();
+            if (isTyping)
+            {
+                CompleteCurrentLine();
+            }
+            else
+            {
+                ShowNextLine();
+            }
         }
     }
 
@@ -52,6 +60,17 @@ public class DialogBox : MonoBehaviour
         }
     }
 
+    // Phương thức để hoàn thành dòng hiện tại ngay lập tức
+    private void CompleteCurrentLine()
+    {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+        dialogContentText.text = dialogLines[currentLineIndex - 1].dialogText;
+        isTyping = false;
+    }
+
     // Phương thức để đóng hộp thoại
     public void CloseDialogBox()
     {
@@ -63,17 +82,18 @@ public class DialogBox : MonoBehaviour
     private IEnumerator TypeSentence(string sentence)
     {
         dialogContentText.text = "";
-        foreach (char letter in sentence.ToCharArray())
+        isTyping = true;
+        for (int i = 0; i < sentence.Length; i++)
         {
-            dialogContentText.text += letter;
+            dialogContentText.text += sentence[i];
             yield return new WaitForSeconds(textSpeed);
-        }
 
-        if (autoPlayMode)
-        {
-            float waitTime = sentence.Length * textSpeed + 0.1f; // Thời gian chờ trước khi chuyển sang dòng tiếp theo
-            yield return new WaitForSeconds(waitTime);
-            ShowNextLine();
+            if (autoPlayMode && i == sentence.Length - 1)
+            {
+                yield return new WaitForSeconds(0.5f);
+                ShowNextLine();
+            }
         }
+        isTyping = false;
     }
 }
