@@ -4077,6 +4077,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &2110811824 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4243156588409384187, guid: 3711a400f1ab81145badb400139f2039, type: 3}
+  m_PrefabInstance: {fileID: 2700688248258373697}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc86afd29dfb4443a70160eb8c1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2133390105
 GameObject:
   m_ObjectHideFlags: 0
@@ -4184,6 +4195,7 @@ GameObject:
   - component: {fileID: 2137859880}
   - component: {fileID: 2137859879}
   - component: {fileID: 2137859878}
+  - component: {fileID: 2137859881}
   m_Layer: 5
   m_Name: btnPressToTalk
   m_TagString: Untagged
@@ -4293,6 +4305,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137859876}
   m_CullTransparentMesh: 1
+--- !u!114 &2137859881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137859876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fceca486e91efb0419e4c83def81261f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogBox: {fileID: 2110811824}
 --- !u!114 &1527209474770217923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4655,22 +4680,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2447816156378230070, guid: de9a9c504abcdc74d914faf459f760ee, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -9095717837082945937, guid: 34587324d412940a79d530020c957dc0, type: 3}
-    - target: {fileID: 2447816156378230070, guid: de9a9c504abcdc74d914faf459f760ee, type: 3}
-      propertyPath: m_Color.b
-      value: 0.8396226
-      objectReference: {fileID: 0}
-    - target: {fileID: 2447816156378230070, guid: de9a9c504abcdc74d914faf459f760ee, type: 3}
-      propertyPath: m_Color.g
-      value: 0.8396226
-      objectReference: {fileID: 0}
-    - target: {fileID: 2447816156378230070, guid: de9a9c504abcdc74d914faf459f760ee, type: 3}
-      propertyPath: m_Color.r
-      value: 0.8396226
-      objectReference: {fileID: 0}
     - target: {fileID: 5132426359933192741, guid: de9a9c504abcdc74d914faf459f760ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.714
@@ -4714,10 +4723,6 @@ PrefabInstance:
     - target: {fileID: 7130355617648977223, guid: de9a9c504abcdc74d914faf459f760ee, type: 3}
       propertyPath: m_Name
       value: NPC_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132582576519705779, guid: de9a9c504abcdc74d914faf459f760ee, type: 3}
-      propertyPath: npcName
-      value: NPC 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

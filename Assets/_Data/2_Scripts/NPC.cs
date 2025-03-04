@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class NPC : Interactable
+public class NPC : MonoBehaviour
 {
-    public string npcName;
+    public DialogContent dialogContent; 
 
-    public override string GetDescription()
+    public DialogContent GetDialogContent()
     {
-        return "Talk to NPC";
+        return dialogContent;
     }
 }
