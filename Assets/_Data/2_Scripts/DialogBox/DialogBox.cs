@@ -52,10 +52,10 @@ public class DialogBox : MonoBehaviour
 
             foreach (DialogActorPopupEffect dialogActorPopupEffect in dialogActorPopupEffects)
             {
-                dialogActorPopupEffect.HideActorPopup();
+                dialogActorPopupEffect.HideActorPopupAnimation();
                 if (dialogActorPopupEffect.actorStats == dialogLines[currentLineIndex].actorStats)
                 {
-                    dialogActorPopupEffect.ShowActorPopup();
+                    dialogActorPopupEffect.ShowActorPopupAnimation();
                 }
             }
             characterNameText.text = dialogLines[currentLineIndex].actorStats.actorName;

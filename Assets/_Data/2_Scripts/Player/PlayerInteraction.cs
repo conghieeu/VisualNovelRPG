@@ -23,7 +23,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (collision.CompareTag("NPC"))
         {
-            btnPressToTalk.SetActive(false);
+            if (btnPressToTalk) btnPressToTalk.SetActive(false);
             npcInteract = null;
         }
     }
