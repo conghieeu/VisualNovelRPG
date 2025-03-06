@@ -4,10 +4,11 @@ using UnityEngine.UI;
 public class btnOpenDialog : MonoBehaviour
 {
     Button thisButton;
-    public DialogBox dialogBox;
+    public DialogCtrl dialogCtrl;
 
     void Start()
     {
+        dialogCtrl = FindFirstObjectByType<DialogCtrl>();
         thisButton = GetComponent<Button>();
         thisButton.onClick.AddListener(OpenDialog);
     }
@@ -22,15 +23,13 @@ public class btnOpenDialog : MonoBehaviour
 
     void OpenDialog()
     {
-        if (dialogBox.gameObject.activeSelf) return;
-
         PlayerInteraction playerInteraction = FindFirstObjectByType<PlayerInteraction>();
         if (playerInteraction != null)
         {
             NPC npcInteract = playerInteraction.GetNPCInteract();
             if (npcInteract != null)
             {
-                dialogBox.SetDialogContent(npcInteract.dialogContent);
+                dialogCtrl.OpenDialogBox(npcInteract.dialogContent);
             }
         }
     }

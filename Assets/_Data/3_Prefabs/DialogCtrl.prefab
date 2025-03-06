@@ -226,11 +226,11 @@ Transform:
   m_GameObject: {fileID: 2225439277385136154}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.44, y: -0.04, z: -1}
+  m_LocalPosition: {x: 0.43999863, y: -0.04, z: -1}
   m_LocalScale: {x: 30, y: 16, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3560355220206001017}
+  m_Father: {fileID: 6733971575828479744}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8865607408670113636
 SpriteRenderer:
@@ -627,6 +627,63 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &4110766792383784207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6733971575828479744}
+  - component: {fileID: 3396434769673705943}
+  m_Layer: 0
+  m_Name: DialogBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6733971575828479744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4110766792383784207}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9042605790858377582}
+  - {fileID: 8422712781741593571}
+  - {fileID: 6457209860230431400}
+  - {fileID: 3773670363896033029}
+  - {fileID: 1095646626475877398}
+  m_Father: {fileID: 3560355220206001017}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3396434769673705943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4110766792383784207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc86afd29dfb4443a70160eb8c1c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterNameText: {fileID: 9003340729965460260}
+  dialogContentText: {fileID: 3871935704781228877}
+  autoPlayMode: 0
+  dialogActorPopupEffects:
+  - {fileID: 8929507711666053074}
+  - {fileID: 3320319087320729042}
+  typingSounds: []
+  textSpeed: 0.01
 --- !u!1 &4184407593953926669
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,7 +716,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2290780654075619474}
-  m_Father: {fileID: 3560355220206001017}
+  m_Father: {fileID: 6733971575828479744}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -872,9 +929,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3560355220206001017}
-  - component: {fileID: 4243156588409384187}
+  - component: {fileID: 3878751688032747196}
   m_Layer: 0
-  m_Name: DialogBox
+  m_Name: DialogCtrl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -893,14 +950,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 9042605790858377582}
-  - {fileID: 8422712781741593571}
-  - {fileID: 6457209860230431400}
-  - {fileID: 3773670363896033029}
-  - {fileID: 1095646626475877398}
+  - {fileID: 6733971575828479744}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4243156588409384187
+--- !u!114 &3878751688032747196
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -909,16 +962,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4490443104281447990}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bc86afd29dfb4443a70160eb8c1c4df, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d48139132f2e9844ae95b18a26a4bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterNameText: {fileID: 9003340729965460260}
-  dialogContentText: {fileID: 3871935704781228877}
-  autoPlayMode: 0
-  dialogActorPopupEffects:
-  - {fileID: 8929507711666053074}
-  - {fileID: 3320319087320729042}
-  textSpeed: 0.01
+  _dontDestroyOnLoad: 0
+  dialogBox: {fileID: 3396434769673705943}
+  currentDialogCollectionIndex: 0
+  dialogCollections: []
 --- !u!1 &4993053741869866746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,7 +1144,7 @@ RectTransform:
   - {fileID: 9175850129192321881}
   - {fileID: 8342032254942758674}
   - {fileID: 2527723017151847790}
-  m_Father: {fileID: 3560355220206001017}
+  m_Father: {fileID: 6733971575828479744}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1391,14 +1441,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6573270330564436232}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 133437021142703376}
   - {fileID: 1878729786378365580}
-  m_Father: {fileID: 3560355220206001017}
+  m_Father: {fileID: 6733971575828479744}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6600705405689028705
 GameObject:
@@ -1842,12 +1892,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7818445513685148159}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3560355220206001017}
+  m_Father: {fileID: 6733971575828479744}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &8178367809945361720
 Camera:

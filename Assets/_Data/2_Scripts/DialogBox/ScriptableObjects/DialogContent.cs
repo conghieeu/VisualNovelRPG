@@ -6,8 +6,6 @@ using UnityEngine;
 public class DialogContent : ScriptableObject
 {
     public List<DialogLine> dialogLines;
-
-
 }
 
 
