@@ -29,7 +29,7 @@ public class btnOpenDialog : MonoBehaviour
             NPC npcInteract = playerInteraction.GetNPCInteract();
             if (npcInteract != null)
             {
-                dialogCtrl.OpenDialogBox(npcInteract.dialogContent);
+                dialogCtrl.OpenDialogBoxNPC(npcInteract.dialogContent);
             }
         }
     }

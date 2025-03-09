@@ -1,15 +1,16 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class DialogBox : MonoBehaviour
 {
-    public TMPro.TextMeshProUGUI characterNameText;
-    public TMPro.TextMeshProUGUI dialogContentText;
     public bool autoPlayMode;
-    public List<DialogActorPopupEffect> dialogActorPopupEffects;
-    public List<AudioClip> typingSounds; // Danh sách các âm thanh để phát khi hiển thị từng ký tự
-    public float textSpeed = 0.05f; // Tốc độ hiển thị từng ký tự
+    [SerializeField] TextMeshProUGUI characterNameText;
+    [SerializeField] TextMeshProUGUI dialogContentText;
+    [SerializeField] List<DialogActorPopupEffect> dialogActorPopupEffects;
+    [SerializeField] List<AudioClip> typingSounds; // Danh sách các âm thanh để phát khi hiển thị từng ký tự
+    [SerializeField] float textSpeed = 0.05f; // Tốc độ hiển thị từng ký tự
     private int currentLineIndex = 0;
     private List<DialogLine> dialogLines;
     private Coroutine typingCoroutine;
@@ -25,7 +26,7 @@ public class DialogBox : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Right mouse button
+        if (Input.GetMouseButtonDown(1)) // Right mouse button
         {
             if (isTyping)
             {
@@ -38,12 +39,18 @@ public class DialogBox : MonoBehaviour
         }
     }
 
-    // Phương thức để nhận đầu vào là một đối tượng DialogContent
-    public void SetDialogLines(List<DialogLine> dialogLines)
+    public bool IsViewingDialogOption()
     {
+        return dialogLines[currentLineIndex - 1].IsDialogOption();
+    }
+
+    // Phương thức để nhận đầu vào là một đối tượng DialogContent
+    public void SetDialogLines(List<DialogLine> dialogLines, int currentLineIndex)
+    {
+        print("SetDialogLines");
         gameObject.SetActive(true);
         this.dialogLines = dialogLines;
-        currentLineIndex = 0;
+        this.currentLineIndex = currentLineIndex;
         ShowNextLine();
     }
 
@@ -70,8 +77,11 @@ public class DialogBox : MonoBehaviour
             characterNameText.text = dialogLines[currentLineIndex].actorStats.actorName;
             typingCoroutine = StartCoroutine(TypeSentence(dialogLines[currentLineIndex].dialogText));
             gameObject.SetActive(true);
+            if (dialogCtrl)
+            {
+                dialogCtrl.OnShowNextLine(dialogLines[currentLineIndex], currentLineIndex);
+            }
             currentLineIndex++;
-            if (dialogCtrl) dialogCtrl.SetCurrentLineIndex(currentLineIndex);
         }
         else // Kết thúc hội thoại
         {
@@ -93,9 +103,9 @@ public class DialogBox : MonoBehaviour
     // Phương thức để bỏ qua hội thoại
     public void CloseDialog()
     {
-        dialogCtrl.dialogCollections.Clear();
         StopAllCoroutines();
         gameObject.SetActive(false);
+        dialogCtrl.OnDialogBoxClose();
     }
 
     // Coroutine để hiển thị từng ký tự của nội dung hội thoại
